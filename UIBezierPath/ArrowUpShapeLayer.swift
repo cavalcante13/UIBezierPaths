@@ -29,21 +29,19 @@ class ArrowUpShapeLayer: CAShapeLayer {
     }
     
     private func drawArrowUp() {
-        //size = 100x190
+        let center  = CGPoint(x: frame.width / 2, y: frame.height / 2) //1
+        let size    = frame.size //2
         
-        let center  = CGPoint(x: frame.width / 2, y: frame.height / 2)
-        let size    = frame.size
+        let path : UIBezierPath = UIBezierPath() //3
+        path.move(to: CGPoint(x: center.x, y: 0)) //4
+        path.addLine(to: CGPoint(x: size.width, y: 60)) //6
+        path.addLine(to: CGPoint(x: size.width - 20, y: 60)) //7
+        path.addLine(to: CGPoint(x: size.width - 20, y: size.height)) //8
+        path.addLine(to: CGPoint(x: 20, y: size.height)) //9
+        path.addLine(to: CGPoint(x: 20, y: 60)) //10
+        path.addLine(to: CGPoint(x: 0, y: 60)) //11
+        path.addLine(to: CGPoint(x: center.x, y: 0)) //12
         
-        let path : UIBezierPath = UIBezierPath()
-        path.move(to: CGPoint(x: center.x, y: 0))
-        path.addLine(to: CGPoint(x: size.width, y: 60))
-        path.addLine(to: CGPoint(x: size.width - 20, y: 60))
-        path.addLine(to: CGPoint(x: size.width - 20, y: size.height))
-        path.addLine(to: CGPoint(x: 20, y: size.height))
-        path.addLine(to: CGPoint(x: 20, y: 60))
-        path.addLine(to: CGPoint(x: 0, y: 60))
-        path.addLine(to: CGPoint(x: center.x, y: 0))
-        
-        self.path = path.cgPath
+        self.path = path.cgPath //13
     }
 }
