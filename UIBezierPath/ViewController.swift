@@ -15,8 +15,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let size = myView.frame.size
-        self.myView.layer.addSublayer(ArrowUpShapeLayer(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height)))
+        let origin  = CGPoint(x: myView.bounds.origin.x, y: myView.bounds.origin.y)
+        let size    = CGSize(width: myView.frame.size.width, height: myView.frame.size.height)
+        let shape   = ArrowUpShapeLayer(frame: CGRect(x: origin.x, y: origin.y, width: size.width, height: size.height))
+        self.myView.layer.addSublayer(shape)
     }
 }
 
